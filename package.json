@@ -8,7 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "cosmicjs": "^4.1.2",
+    "@cosmicjs/sdk": "^1.0.9",
+    "cosmicjs": "^4.3.7",
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
