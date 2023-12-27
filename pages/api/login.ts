@@ -19,7 +19,6 @@ const endpointLogin = async (
 
     if(req.method === 'POST'){
         const {login, senha} = req.body;
-
         const usuariosEncontrados = await UsuarioModel.find({email : login, senha : md5(senha)});
         if(usuariosEncontrados && usuariosEncontrados.length > 0){
             const usuarioEncotrado = usuariosEncontrados[0];

@@ -16,6 +16,15 @@ const bucketAvatares = createBucketClient({
   writeKey: CHAVE_GRAVACAO_AVATARES
 })
 
+const bucketPublicacoes = createBucketClient({
+  bucketSlug:  BUCKET_PUBLICACOES??"",
+  readKey: '',
+  writeKey: CHAVE_GRAVACAO_PUBLICACOES
+})
+
+
+
+
 // const Cosmic = cosmicjs();
 // const bucketAvatares = Cosmic.bucket({
 //     slug: BUCKET_AVATARES,
@@ -43,10 +52,11 @@ const uploadImagemCosmic = async(req : any) => {
         };
        
         if(req.url && req.url.includes('publicacao')){
-            console.log("11111")
-            // return await bucketPublicacoes.addMedia({media : media_object});
+            console.log(media_object + " 111")
+            return await bucketPublicacoes.media.insertOne({media : media_object});
         }else{
-            console.log("33333")
+            console.log(media_object.originalname + " 222")
+
             return await bucketAvatares.media.insertOne({media : media_object});
         }
     }

@@ -19,7 +19,6 @@ const comentarioEndpoint = async (req : NextApiRequest, res : NextApiResponse<Re
             if(!publicacao){
                 return res.status(400).json({erro : 'Publicacao nao encontrada'});
             }
-
             if(!req.body || !req.body.comentario
                 || req.body.comentario.length < 2){
                 return res.status(400).json({erro : 'Comentario nao e valido'});

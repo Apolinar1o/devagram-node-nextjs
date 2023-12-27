@@ -17,13 +17,22 @@ const feedEndpoint = async (req : NextApiRequest, res : NextApiResponse<Resposta
                 if(!usuario){
                     return res.status(400).json({erro : 'Usuario nao encontrado'});
                 }
-
                 // e como eu busco as publicacoes dele?
                 const publicacoes = await PublicacaoModel
-                    .find({idUsuario : usuario._id})
-                    .sort({data : -1});
+                    .find({idusuario : usuario._id})
 
-                return res.status(200).json(publicacoes);
+                    const result = [];
+                    for (const publicacao of publicacoes) {
+                        const usuarioDaPublicacao = await UsuarioModel.findById(publicacao.idUsuario);
+                        if(usuarioDaPublicacao){
+                             const final = {...publicacao._doc, usuario : {
+                                 nome : usuarioDaPublicacao.nome,
+                                 avatar : usuarioDaPublicacao.avatar
+                             }};
+                             result.push(final);  
+                        }
+                     }    
+                return res.status(200).json(result);
             }else{
                 const {userId} = req.query;
                 const usuarioLogado = await UsuarioModel.findById(userId);
@@ -53,6 +62,7 @@ const feedEndpoint = async (req : NextApiRequest, res : NextApiResponse<Resposta
                         result.push(final);  
                    }
                 }
+                
 
                 return res.status(200).json(result);
             }

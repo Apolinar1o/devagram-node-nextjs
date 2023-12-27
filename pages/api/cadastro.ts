@@ -12,13 +12,11 @@ const handler = nc()
     .use(updload.single('file'))
     .post(async (req : NextApiRequest, res : NextApiResponse<RespostaPadraoMsg>) => {
         try{
-            console.log("4444444444444444444")
             const usuario = req.body as CadastroRequisicao;
         
             if(!usuario.nome || usuario.nome.length < 2){
                 return res.status(400).json({erro : 'Nome invalido'});
             }
-            console.log("4444444444444444444")
             if(!usuario.email || usuario.email.length < 5
                 || !usuario.email.includes('@')
                 || !usuario.email.includes('.')){
@@ -28,7 +26,7 @@ const handler = nc()
             if(!usuario.senha || usuario.senha.length < 4){
                 return res.status(400).json({erro : 'Senha invalida'});
             }
-    
+            
             // validacao se ja existe usuario com o mesmo email
             const usuariosComMesmoEmail = await UsuarioModel.find({email : usuario.email});
             if(usuariosComMesmoEmail && usuariosComMesmoEmail.length > 0){
@@ -36,9 +34,9 @@ const handler = nc()
             }
 
             // enviar a imagem do multer para o cosmic
-            console.log("1111111111")
+            console.log("---------------------------")
             const image = await uploadImagemCosmic(req);
-            console.log("2222222222222")
+            console.log("---------------------------")
 
             // salvar no banco de dados
             const usuarioASerSalvo = {
@@ -47,6 +45,8 @@ const handler = nc()
                 senha : md5(usuario.senha),
                 avatar : image?.media?.url
             }
+            console.log("---------------------------")
+
             await UsuarioModel.create(usuarioASerSalvo);
             return res.status(200).json({msg : 'Usuario criado com sucesso'});
         }catch(e : any){
