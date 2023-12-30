@@ -31,10 +31,10 @@ const handler = nc()
             console.log("222222222225555555555555555555555555555555")
 
             // validacao se ja existe usuario com o mesmo email
-            const usuariosComMesmoEmail = await UsuarioModel.find({email : usuario.email});
-            if(usuariosComMesmoEmail && usuariosComMesmoEmail.length > 0){
-                return res.status(400).json({erro : 'Ja existe uma conta com o email informado'});
-            }
+            // const usuariosComMesmoEmail = await UsuarioModel.find({email : usuario.email});
+            // if(usuariosComMesmoEmail && usuariosComMesmoEmail.length > 0){
+            //     return res.status(400).json({erro : 'Ja existe uma conta com o email informado'});
+            // }
             console.log("222222222226666666666666666666666")
             // enviar a imagem do multer para o cosmic
             const image = await uploadImagemCosmic(req);
