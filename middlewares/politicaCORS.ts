@@ -13,7 +13,7 @@ export const politicaCORS = (handler : NextApiHandler) =>
             methods : ['GET', 'POST', 'PUT'],
             optionsSuccessStatus : 200, // navegadores antigos dao problema quando se retorna 204
         });
-        console.log("4444444444444444444444444444444444444444111111111111111111111")
+        console.log("foi")
         return handler(req, res);
     }catch(e){
         console.log('Erro ao tratar a politica de CORS:', e);
