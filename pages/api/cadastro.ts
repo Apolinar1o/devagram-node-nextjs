@@ -14,28 +14,31 @@ const handler = nc()
         try{
             console.log("((((((111111111111111111111111111111111111111))))))")
             const usuario = req.body as CadastroRequisicao;
-        
+            console.log("22222222222222222222222222222222222")
             if(!usuario.nome || usuario.nome.length < 2){
                 return res.status(400).json({erro : 'Nome invalido'});
             }
+            console.log("22222222222333333333333333333")
             if(!usuario.email || usuario.email.length < 5
                 || !usuario.email.includes('@')
                 || !usuario.email.includes('.')){
                 return res.status(400).json({erro : 'Email invalido'});
             }
-    
+            console.log("22222222222444444444444444444444444")
             if(!usuario.senha || usuario.senha.length < 4){
                 return res.status(400).json({erro : 'Senha invalida'});
             }
-            
+            console.log("222222222225555555555555555555555555555555")
+
             // validacao se ja existe usuario com o mesmo email
             const usuariosComMesmoEmail = await UsuarioModel.find({email : usuario.email});
             if(usuariosComMesmoEmail && usuariosComMesmoEmail.length > 0){
                 return res.status(400).json({erro : 'Ja existe uma conta com o email informado'});
             }
-
+            console.log("222222222226666666666666666666666")
             // enviar a imagem do multer para o cosmic
             const image = await uploadImagemCosmic(req);
+            console.log("222222222227777777777777777")
 
             // salvar no banco de dados
             const usuarioASerSalvo = {
