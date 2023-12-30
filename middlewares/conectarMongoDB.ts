@@ -23,8 +23,8 @@ export const conectarMongoDB = (handler : NextApiHandler) =>
     }
     console.log("3333444444444444444444444442")
     try {   
-        mongoose.connection.on('connected', () => console.log('Banco de dados conectado'));
-        mongoose.connection.on('error', error => console.log(`Ocorreu erro ao conectar no banco: ${error}`));
+        // mongoose.connection.on('connected', () => console.log('Banco de dados conectado'));
+        // mongoose.connection.on('error', error => console.log(`Ocorreu erro ao conectar no banco: ${error}`));
         console.log("33334555555555555555555555555555")
         console.log("tentativa de conexao")
         await mongoose.connect("mongodb+srv://devameet-user:hyslla21@devameetcluster.0bkfmbc.mongodb.net/test");
