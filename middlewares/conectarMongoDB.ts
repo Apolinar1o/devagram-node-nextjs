@@ -16,7 +16,7 @@ export const conectarMongoDB = (handler : NextApiHandler) =>
     // obter a variavel de ambiente preenchida do env
     const {DB_CONEXAO_STRING} = process.env;
     console.log("333332222222222222222222222222")
-    console.log(DB_CONEXAO_STRING)
+    console.log(DB_CONEXAO_STRING + " env?")
     // se a env estiver vazia aborta o uso do sistema e avisa o programador
     if(!DB_CONEXAO_STRING){
         return res.status(500).json({ erro : 'ENV de configuracao do banco, nao informado'});
