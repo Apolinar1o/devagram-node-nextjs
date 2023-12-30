@@ -12,7 +12,7 @@ const handler = nc()
     .use(updload.single('file'))
     .post(async (req : NextApiRequest, res : NextApiResponse<RespostaPadraoMsg>) => {
         try{
-            console.log("111111111111111111111111111111111111111")
+            console.log("((((((111111111111111111111111111111111111111))))))")
             const usuario = req.body as CadastroRequisicao;
         
             if(!usuario.nome || usuario.nome.length < 2){
