@@ -28,7 +28,7 @@ export const conectarMongoDB = (handler : NextApiHandler) =>
         console.log("33334555555555555555555555555555")
     
     
-        await mongoose.connect(DB_CONEXAO_STRING);
+        await mongoose.connect("mongodb+srv://aapolinarioneto:hyslla21@cluster0.3amaest.mongodb.net");
     
         console.log("333366666666666666666666666666")
     } catch (e) {
