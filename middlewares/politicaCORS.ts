@@ -3,7 +3,10 @@ import type {RespostaPadraoMsg} from '../types/RespostaPadraoMsg';
 import NextCors from 'nextjs-cors';
 
 export const politicaCORS = (handler : NextApiHandler) =>
+    
     async (req : NextApiRequest, res : NextApiResponse<RespostaPadraoMsg>) => {
+
+        console.log("4444444444444444444444444444444444444444")
     try{
         await NextCors(req, res, {
             origin : '*',

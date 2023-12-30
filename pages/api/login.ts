@@ -8,9 +8,11 @@ import jwt from 'jsonwebtoken';
 import { politicaCORS } from '../../middlewares/politicaCORS';
 
 const endpointLogin = async (
+    
     req : NextApiRequest,
     res : NextApiResponse<RespostaPadraoMsg | LoginResposta>
 ) => {
+    console.log("22222222222222222222222222222222222")
     const {MINHA_CHAVE_JWT} = process.env;
     if(!MINHA_CHAVE_JWT){
         return res.status(500).json({erro : 'ENV Jwt nao informada'});

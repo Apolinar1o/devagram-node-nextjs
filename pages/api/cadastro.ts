@@ -12,6 +12,7 @@ const handler = nc()
     .use(updload.single('file'))
     .post(async (req : NextApiRequest, res : NextApiResponse<RespostaPadraoMsg>) => {
         try{
+            console.log("111111111111111111111111111111111111111")
             const usuario = req.body as CadastroRequisicao;
         
             if(!usuario.nome || usuario.nome.length < 2){
@@ -34,9 +35,7 @@ const handler = nc()
             }
 
             // enviar a imagem do multer para o cosmic
-            console.log("---------------------------")
             const image = await uploadImagemCosmic(req);
-            console.log("---------------------------")
 
             // salvar no banco de dados
             const usuarioASerSalvo = {
