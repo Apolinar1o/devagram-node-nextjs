@@ -27,7 +27,7 @@ export const conectarMongoDB = (handler : NextApiHandler) =>
         mongoose.connection.on('error', error => console.log(`Ocorreu erro ao conectar no banco: ${error}`));
         console.log("33334555555555555555555555555555")
         console.log("tentativa de conexao")
-        mongoose.connect("mongodb+srv://aapolinarioneto:hyslla21@cluster0.3amaest.mongodb.net");
+        await mongoose.connect("mongodb+srv://devameet-user:hyslla21@devameetcluster.0bkfmbc.mongodb.net/test");
     
         console.log("333366666666666666666666666666")
     } catch (e) {
