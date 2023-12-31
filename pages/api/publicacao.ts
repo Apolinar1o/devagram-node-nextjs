@@ -12,10 +12,8 @@ const handler = nc()
     .use(updload.single('file'))
     .post(async (req : any, res : NextApiResponse<RespostaPadraoMsg>) => {
         try{
-            console.log("111111111111111111111111")
             const {userId} = req.query;
             const usuario = await UsuarioModel.findById(userId);
-                        console.log("111111111111111111111111")
 
             if(!usuario){
                 return res.status(400).json({erro : 'Usuario nao encontrado'});
@@ -33,9 +31,7 @@ const handler = nc()
             if(!req.file || !req.file.originalname){
                 return res.status(400).json({erro : 'Imagem e obrigatoria'});
             }
-            console.log("333333333333")
             const image = await uploadImagemCosmic(req);
-            console.log("44444444")
 
             const publicacao = {
                 idUsuario : usuario._id,

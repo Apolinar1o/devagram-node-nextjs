@@ -52,10 +52,8 @@ const uploadImagemCosmic = async(req : any) => {
         };
        
         if(req.url && req.url.includes('publicacao')){
-            console.log(media_object + " 111")
             return await bucketPublicacoes.media.insertOne({media : media_object});
         }else{
-            console.log(media_object.originalname + " 222")
 
             return await bucketAvatares.media.insertOne({media : media_object});
         }
