@@ -31,7 +31,9 @@ const handler = nc()
             if(!req.file || !req.file.originalname){
                 return res.status(400).json({erro : 'Imagem e obrigatoria'});
             }
+            console.log("1111111111111111111111111111111111111")
             const image = await uploadImagemCosmic(req);
+            console.log("22222222222222222222222222")
 
             const publicacao = {
                 idUsuario : usuario._id,
@@ -41,9 +43,11 @@ const handler = nc()
             }
 
             usuario.publicacoes++;
-
+            console.log("333333333333333333333333333")
             await UsuarioModel.findByIdAndUpdate({_id : usuario._id}, usuario);
             await PublicacaoModel.create(publicacao);
+            console.log("4444444444444444444444444")
+
             return res.status(200).json({msg : 'Publicacao criada com sucesso'});
         }catch(e){
             console.log(e);
